@@ -1,14 +1,27 @@
 #pragma once
 
+#include "Graphics.h"
+#include "Dude.h"
+
 class Poo
 {
 public:
+	Poo(int in_x, int in_y, int in_vx, int in_vy) {
+		x = in_x;
+		y = in_y;
+		vx = in_vx;
+		vy = in_vy;
+	}
 	void Update();
+	void ProcessConsumption( const Dude& dude );
+	void Draw( Graphics& gfx ) const;
+	bool IsEaten() const;
+private:
 	int x;
 	int y;
 	int vx;
 	int vy;
-	int width = 24;
-	int height = 24;
-	bool IsEaten = false;
+	static constexpr int width = 24;
+	static constexpr int height = 24;
+	bool isEaten = false;
 };
